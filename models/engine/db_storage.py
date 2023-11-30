@@ -4,6 +4,8 @@ from os import getenv
 from sqlalchemy import create_engine
 from models.base_model import Base
 from sqlalchemy.orm import sessionmaker, scoped_session
+
+
 class DBStorage:
     """this is the class DBStorage"""
     __engine = None
@@ -56,6 +58,7 @@ class DBStorage:
         """delete from the current database session obj if not None"""
         if obj is not None:
             self.__session.delete(obj)
+
     def reload(self):
         """create all tables in the database"""
         from models.user import User
@@ -67,4 +70,4 @@ class DBStorage:
         make_s = sessionmaker(bind=self.__engine, expire_on_commit=False)
         scop_session = scoped_session(make_s)
         self.__session = scop_session()
-        Base.metadata.create_all(self.__engine)             
+        Base.metadata.create_all(self.__engine)
