@@ -20,3 +20,26 @@ class DBStorage:
         self.__engine = create_engine(link, pool_pre_ping=True)
         if getenv("HBNB_ENV") == "test":
             Base.metadata.drop_all(self.__engine)
+
+    def all(self, cls=None):
+        """query all objects"""
+        from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
+        dict = {}
+        classes = [User, State, City, Amenity, Place, Review]
+        if cls is None:
+            for i in classes:
+                res = self.__session.query(i).all()
+                for v in res.values():
+                    k = "{}.{}".format(i, v.id)
+                    setattr(dict, k, v)
+        else:
+            res = self.__session.query(cls).all()
+            for v in res.values():
+                k = "{}.{}".format(cls, v.id)
+                setattr(dict, k, v)
+        return dict
