@@ -10,7 +10,7 @@ def show():
     return "Hello HBNB!"
 
 
-@app.route("/", strict_slashes=False)
+@app.route("/hbnb", strict_slashes=False)
 def show2():
     """display HBNB"""
     return "HBNB"
