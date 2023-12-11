@@ -27,6 +27,7 @@ def show3(text):
 
 
 @app.route("/python/<text>", strict_slashes=False)
+@app.route("/python", strict_slashes=False)
 def show4(text="is cool"):
     """display “Python ”, followed by the value of
     the text variable (replace
