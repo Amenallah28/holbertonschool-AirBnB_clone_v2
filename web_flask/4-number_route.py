@@ -38,9 +38,8 @@ def show4(text="is cool"):
 
 @app.route("/number/<int:n>", strict_slashes=False)
 def show5(n):
-    """display “Python ”, followed by the value of
-    the text variable (replace
-    underscore _ symbols with a space """
+    """display “n is a number”
+    only if n is an integer"""
     return "{} is a number".format(escape(n))
 
 
