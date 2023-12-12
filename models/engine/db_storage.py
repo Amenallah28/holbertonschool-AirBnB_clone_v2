@@ -41,7 +41,7 @@ class DBStorage:
                     setattr(dict, k, v)
         else:
             res = self.__session.query(cls).all()
-            for v in res.values():
+            for v in res:
                 k = "{}.{}".format(cls, v.id)
                 setattr(dict, k, v)
         return dict
@@ -74,6 +74,5 @@ class DBStorage:
 
     def close(self):
         """call remove() method on the private
-        session attribute (self.__session) or
-        close() on the class Session """
+        session attribute (self.__session) orclose() on the class Session """
         self.__session.close()
