@@ -9,8 +9,8 @@ class State(BaseModel, Base):
     __tablename__ = "states"
     from sqlalchemy import Column, String
     from sqlalchemy.orm import relationship
-    name = Column(String(128), nullable=False)
     if getenv("HBNB_TYPE_STORAGE") == "db":
+        name = Column(String(128), nullable=False)
         cities = relationship("City", backref="state", cascade="all, delete")
 
     @property
@@ -19,7 +19,7 @@ class State(BaseModel, Base):
         with state_id equals to the current State.id"""
         from models import storage
         l = []
-        res = storage.all("State")
+        res = storage.all("City")
         for v in res.values():
             if v["state_id"] == self.id:
                 l.append(v)
