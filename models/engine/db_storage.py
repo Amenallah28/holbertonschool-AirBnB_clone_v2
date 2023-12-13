@@ -37,12 +37,12 @@ class DBStorage:
             for i in classes:
                 res = self.__session.query(i).all()
                 for v in res:
-                    k = "{}.{}".format(i, v.id)
+                    k = "{}.{}".format(i.__name__, v.id)
                     dict[k] = v
         else:
             res = self.__session.query(cls).all()
             for v in res:
-                k = "{}.{}".format(cls, v.id)
+                k = "{}.{}".format(cls.__name__, v.id)
                 dict[k] = v
         return dict
 
