@@ -3,6 +3,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Table, ForeignKey
 from sqlalchemy.orm import relationship
+from os import getenv
 """many to many relationship"""
 place_amenity = Table(
     "place_amenity",
@@ -22,5 +23,8 @@ place_amenity = Table(
 class Amenity(BaseModel, Base):
     """this is the class amenity"""
     __tablename__ = "amenities"
-    name = Column(String(128), nullable=False)
-    place_amenities = relationship("Place", secondary="place_amenity")
+    if getenv("HBNB_TYPE_STORAGE") == "db":
+        name = Column(String(128), nullable=False)
+        place_amenities = relationship("Place", secondary="place_amenity")
+    else:
+        name = ""
