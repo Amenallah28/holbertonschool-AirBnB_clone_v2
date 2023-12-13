@@ -34,8 +34,9 @@ class Place(BaseModel, Base):
         """returns the list of Review instances
         with place_id equals to the current Place.id"""
         from models import storage
+        from models.review import Review
         l = []
-        res = storage.all("Review")
+        res = storage.all(Review)
         for v in res.values():
             if v["place_id"] == self.id:
                 l.append(v)
