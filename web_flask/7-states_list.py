@@ -4,6 +4,8 @@ and diplay the states"""
 from flask import Flask, render_template
 from models import storage
 from models.state import State
+"""display list of all State objects
+present in DBStorage sorted by name (A->Z)"""
 app = Flask(__name__)
 
 
