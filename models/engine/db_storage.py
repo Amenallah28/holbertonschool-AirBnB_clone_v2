@@ -36,7 +36,7 @@ class DBStorage:
         if cls is None:
             for i in classes:
                 res = self.__session.query(i).all()
-                for v in res.values():
+                for v in res:
                     k = "{}.{}".format(i, v.id)
                     dict[k] = v
         else:
