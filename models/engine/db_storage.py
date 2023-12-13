@@ -38,12 +38,12 @@ class DBStorage:
                 res = self.__session.query(i).all()
                 for v in res.values():
                     k = "{}.{}".format(i, v.id)
-                    dict["k"] = v
+                    dict[k] = v
         else:
             res = self.__session.query(cls).all()
             for v in res:
                 k = "{}.{}".format(cls, v.id)
-                dict["k"] = v
+                dict[k] = v
         return dict
 
     def new(self, obj):
