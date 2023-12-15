@@ -3,6 +3,8 @@
 from flask import Flask, render_template
 from markupsafe import escape
 from models import storage
+from models.state import State
+
 
 app = Flask(__name__)
 
@@ -25,6 +27,8 @@ def show3(text):
     of the text variable (replace
     underscore _ symbols with a space )"""
     text = text.replace("_", " ")
+    states = list(storage.all(State).values())
+
     return "C {}".format(escape(text))
 
 
