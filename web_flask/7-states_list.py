@@ -2,6 +2,8 @@
 """a script that starts a Flask web application"""
 from flask import Flask, render_template
 from markupsafe import escape
+from models import storage
+
 app = Flask(__name__)
 
 
