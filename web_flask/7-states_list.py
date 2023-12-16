@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 """
+Write a script that starts a Flask web application:
+Your web application must be listening on 0.0.0.0, port 5000
+
 a script that starts a Flask web application and displays states
 """
 from models import storage
@@ -26,4 +29,4 @@ def teardown(exception):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port="5000")
