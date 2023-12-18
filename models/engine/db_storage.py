@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """New engine DBStorage"""
 from os import getenv
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Engine
 from models.base_model import Base
 from sqlalchemy.orm import sessionmaker, scoped_session
 
@@ -68,7 +68,7 @@ class DBStorage:
         from models.amenity import Amenity
         from models.place import Place
         from models.review import Review
-        if isinstance(self.__engine, create_engine()):
+        if isinstance(self.__engine, Engine):
             make_s = sessionmaker(bind=self.__engine, expire_on_commit=False)
             scop_session = scoped_session(make_s)
             self.__session = scop_session()
