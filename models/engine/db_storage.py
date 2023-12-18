@@ -68,10 +68,11 @@ class DBStorage:
         from models.amenity import Amenity
         from models.place import Place
         from models.review import Review
-        make_s = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        scop_session = scoped_session(make_s)
-        self.__session = scop_session()
-        Base.metadata.create_all(self.__engine)
+        if isinstance(self.__engine, create_engine):
+            make_s = sessionmaker(bind=self.__engine, expire_on_commit=False)
+            scop_session = scoped_session(make_s)
+            self.__session = scop_session()
+            Base.metadata.create_all(self.__engine)
 
     def close(self):
         """call remove() method on the private
