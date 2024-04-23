@@ -17,11 +17,12 @@ def displayC(text):
     (replace underscore _ symbols with a space ) """
     return "C " + text.replace('_', ' ')
 
-@app.route('/python',strict_slashes=False)
-@app.route('/python/<text>',strict_slashes=False)
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
 def displayPython(text='is cool'):
     """display python + a text"""
-    return "C " + text.replace('_',' ')
+    return "Python " + text.replace('_', ' ')
+
 
 
 if __name__=="__main__":
