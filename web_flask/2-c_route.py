@@ -14,7 +14,6 @@ def hbnb():
 def displayC(text):
     """ display “C ” followed by the value of the text variable 
     (replace underscore _ symbols with a space ) """
-    text = text.replace("_"," ")
     return "C " + text.replace('_', ' ')
 
 
