@@ -33,6 +33,7 @@ def displayPython(text='is cool'):
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def display_n(n):
+    """display n only if n in an int"""
     return "{:d} is a number".format(n)
 
 if __name__=="__main__":
